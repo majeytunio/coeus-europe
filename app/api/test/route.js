@@ -38,7 +38,7 @@ export async function POST(req) {
 
     // --- 3️⃣ Find the email column index ---
     const header = rows[0];
-    const emailIndex = header.indexOf("Email Address");
+    const emailIndex = header.indexOf("Email address");
     // const emailIndex = header.indexOf("Please provide your email here");
 
     if (emailIndex === -1) {
