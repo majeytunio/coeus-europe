@@ -496,13 +496,15 @@ export async function GET(req) {
   }
 
   if (!user) {
-    console.log("No authenticated user found after all attempts!");
+    console.log("No authenticated user found! Redirecting to restoration page...");
     
-    // **ALTERNATIVE FIX**: Redirect to a page that can restore session
-    const url = new URL("/admin/linkedin-restore", req.url);
-    url.searchParams.set("code", code);
-    url.searchParams.set("redirect_uri", process.env.LINKEDIN_REDIRECT_URI);
-    return Response.redirect(url);
+    // Save the code and redirect to restoration page
+    const restoreUrl = new URL("/admin/linkedin-restore", req.url);
+    restoreUrl.searchParams.set("code", code);
+    restoreUrl.searchParams.set("redirect_uri", process.env.LINKEDIN_REDIRECT_URI);
+    
+    console.log("Redirecting to:", restoreUrl.toString());
+    return Response.redirect(restoreUrl);
   }
 
   // Rest of your existing LinkedIn OAuth code...
