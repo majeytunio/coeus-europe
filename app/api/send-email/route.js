@@ -32,7 +32,7 @@ export async function POST(req) {
     // 3. Send
     await transporter.sendMail(mailOptions);
 
-    return Response.json({ message: "Notification sent successfully" });
+    return Response.json({ message: "Notification sent successfully", exists: true }, { status: 200 });
 
   } catch (err) {
     console.error("SMTP Error:", err);
