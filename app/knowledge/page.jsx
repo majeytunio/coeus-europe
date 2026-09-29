@@ -1517,7 +1517,7 @@ export default function KnowledgeTestPage() {
             />
           </div>
 
-          <div className="terms-box">
+          {/* <div className="terms-box">
             <h3>Test Instructions & Rules</h3>
             <ul>
               <li>You have <strong>15 minutes</strong> to complete all 9 multiple choice questions.</li>
@@ -1533,6 +1533,36 @@ export default function KnowledgeTestPage() {
                 required
               />
               <span>I agree to the test rules and certify that I will complete this assessment unassisted.</span>
+            </label>
+          </div> */}
+
+          <div className="terms-box">
+            <h3>Important Assessment Rules & Disqualification Policy</h3>
+            <ul>
+              <li>
+                <strong>Strict One-Attempt Policy:</strong> This is your <strong>first and final attempt</strong>. Retakes are strictly prohibited under any circumstances.
+              </li>
+              <li>
+                <strong>Zero Tolerance for Cheating:</strong> Any detected attempt to cheat, copy content, use unauthorized tools, or switch tabs/windows will result in <strong>immediate and permanent disqualification</strong> from future applications at CoeUS Europe.
+              </li>
+              <li>
+                <strong>Session Telemetry:</strong> You have <strong>15 minutes</strong> to complete all 9 questions. All active browser switches, duration, and focus losses are logged automatically.
+              </li>
+              <li>
+                <strong>Environment Restrictions:</strong> Clipboard functions (copy/paste) and context menus (right-click) are disabled throughout the session.
+              </li>
+            </ul>
+
+            <label className="checkbox-label">
+              <input
+                type="checkbox"
+                checked={agreedTerms}
+                onChange={(e) => setAgreedTerms(e.target.checked)}
+                required
+              />
+              <span>
+                I certify that I am taking this test unassisted. I understand that this is my <strong>only chance</strong> and that cheating or tab switching will lead to a permanent ban from CoeUS Europe.
+              </span>
             </label>
           </div>
 
