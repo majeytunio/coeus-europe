@@ -326,7 +326,7 @@ export default function KnowledgeTestPage() {
           </div>
 
           <div className="terms-box">
-            <h3>Coeus Guarantee & Assessment Policy</h3>
+            <h3>Coeus Europe Guarantee & Assessment Policy</h3>
             <ul>
               <li>
                 <strong>Fair evaluation:</strong> All tests are reviewed consistently and objectively.
