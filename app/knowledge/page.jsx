@@ -332,24 +332,32 @@ export default function KnowledgeTestPage() {
                 <strong>Fair evaluation:</strong> All tests are reviewed consistently and objectively.
               </li>
               <li>
-                <strong>Privacy first:</strong> Your data is handled securely and in compliance with GDPR. Personal assessment data remains under Coeus Europe directives.
+                <strong>Privacy first:</strong> Your data is handled securely and in compliance with GDPR.
               </li>
               <li>
-                <strong>Session Telemetry:</strong> You have <strong>4.5 minutes</strong> to complete all 9 questions. All active screen/tab switching and focus losses are logged automatically.
+                <strong>Session Telemetry:</strong> You have <strong>4.5 minutes</strong> to complete all 9 questions. Switching windows or tabs is recorded during the test session.
               </li>
             </ul>
 
-            <div style={{ marginBottom: "16px" }}>
+            <div className="directives-actions">
               <button
                 type="button"
                 className="btn-directives"
                 onClick={() => setShowDirectivesModal(true)}
               >
-                📄 View Coeus Europe Directives & Privacy Policy
+                👁️ View Coeus Europe Directives & Privacy Policy
               </button>
+              
+              <a 
+                href="/docs/coeus-europe-directives.pdf" 
+                download="Coeus_Europe_Directives_and_Privacy_Policy.pdf"
+                className="btn-download-directives"
+              >
+                📥 Download Coeus Europe Directives (PDF)
+              </a>
             </div>
 
-            <label className="checkbox-label">
+            <label className="checkbox-label" style={{ marginTop: "16px" }}>
               <input
                 type="checkbox"
                 checked={agreedTerms}
@@ -378,20 +386,31 @@ export default function KnowledgeTestPage() {
                 <p>
                   This policy governs the processing of candidate assessment data, contact details, and test metrics by <strong>Coeus Europe</strong> in accordance with GDPR requirements.
                 </p>
-                <h4>Policy Summary:</h4>
-                <ul>
-                  <li><strong>Fair Evaluation:</strong> All responses are evaluated objectively using standardized scoring criteria.</li>
-                  <li><strong>Data Ownership & Directives:</strong> By continuing, candidates acknowledge that test submissions, telemetry logs, and assessment metrics are recorded and retained for recruitment verification purposes.</li>
-                  <li><strong>Assessment Integrity:</strong> Screen switching, focus shifts, and tab changes during active tests are logged to prevent unauthorized assistance.</li>
-                </ul>
+                <h4>1. Evaluation & Integrity</h4>
+                <p>
+                  All responses are evaluated objectively using standardized scoring criteria. Screen switching, focus shifts, and tab changes during active tests are logged to prevent unauthorized assistance and maintain assessment integrity.
+                </p>
+                <h4>2. Data Processing & Retention</h4>
+                <p>
+                  By continuing, candidates acknowledge that test submissions, telemetry logs, and assessment metrics are recorded and retained by Coeus Europe for recruitment and verification purposes.
+                </p>
               </div>
-              <button 
-                type="button" 
-                className="submit" 
-                onClick={() => setShowDirectivesModal(false)}
-              >
-                Close & Return
-              </button>
+              <div className="modal-footer">
+                <a 
+                  href="/docs/coeus-europe-directives.pdf" 
+                  download="Coeus_Europe_Directives_and_Privacy_Policy.pdf"
+                  className="btn-download-modal"
+                >
+                  📥 Download PDF Copy
+                </a>
+                <button 
+                  type="button" 
+                  className="btn-close-modal" 
+                  onClick={() => setShowDirectivesModal(false)}
+                >
+                  Close & Return
+                </button>
+              </div>
             </div>
           </div>
         )}
@@ -520,7 +539,7 @@ function Styles() {
         padding: 10px 18px;
         border-radius: 8px;
         display: flex;
-        justify-content: space-between;
+        justify-space: space-between;
         align-items: center;
         font-weight: 600;
         box-shadow: 0 2px 8px rgba(0,0,0,0.08);
@@ -560,21 +579,40 @@ function Styles() {
       .terms-box h3 { margin: 0 0 10px; font-size: 15px; color: var(--navy); }
       .terms-box ul { margin: 0 0 16px; padding-left: 20px; font-size: 14px; color: var(--ink-soft); }
       .terms-box li { margin-bottom: 8px; line-height: 1.4; }
-      .checkbox-label { display: flex; gap: 10px; align-items: flex-start; font-size: 13.5px; color: var(--ink); cursor: pointer; }
-      .checkbox-label input { margin-top: 3px; cursor: pointer; }
+      .directives-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
       .btn-directives {
         background: #eef4f8;
         border: 1px solid var(--navy);
         color: var(--navy);
-        padding: 8px 14px;
+        padding: 10px 14px;
         border-radius: 6px;
         font-size: 13.5px;
         font-weight: 600;
         cursor: pointer;
         width: 100%;
-        text-align: left;
+        text-align: center;
       }
       .btn-directives:hover { background: #e2ecf3; }
+      .btn-download-directives {
+        background: #ffffff;
+        border: 1px dashed var(--navy);
+        color: var(--navy);
+        padding: 10px 14px;
+        border-radius: 6px;
+        font-size: 13.5px;
+        font-weight: 600;
+        text-align: center;
+        text-decoration: none;
+        display: block;
+      }
+      .btn-download-directives:hover { background: #f0f4f8; }
+      .checkbox-label { display: flex; gap: 10px; align-items: flex-start; font-size: 13.5px; color: var(--ink); cursor: pointer; }
+      .checkbox-label input { margin-top: 3px; cursor: pointer; }
       .modal-overlay {
         position: fixed;
         inset: 0;
@@ -597,6 +635,30 @@ function Styles() {
       }
       .modal-content h2 { margin-top: 0; font-size: 20px; color: var(--navy); }
       .modal-body { font-size: 14px; line-height: 1.6; color: var(--ink); margin-bottom: 20px; }
+      .modal-footer { display: flex; gap: 10px; flex-wrap: wrap; }
+      .btn-download-modal {
+        flex: 1;
+        background: #eef4f8;
+        color: var(--navy);
+        border: 1px solid var(--navy);
+        padding: 10px;
+        border-radius: 6px;
+        text-align: center;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 13.5px;
+      }
+      .btn-close-modal {
+        flex: 1;
+        background: var(--navy);
+        color: #fff;
+        border: none;
+        padding: 10px;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        font-size: 13.5px;
+      }
       .question { border-top: 1px solid var(--border); padding-top: 24px; }
       .q-head { display: flex; gap: 12px; margin-bottom: 14px; }
       .q-num { width: 28px; height: 28px; border-radius: 50%; background: var(--navy); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; flex: none; }
@@ -613,6 +675,7 @@ function Styles() {
       .submit:disabled { background: #9aa5b1; cursor: not-allowed; }
       @media (max-width: 480px) {
         .options { margin-left: 0; }
+        .modal-footer { flex-direction: column; }
       }
     `}</style>
   );
